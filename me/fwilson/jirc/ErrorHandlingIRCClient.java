@@ -23,6 +23,7 @@ public class ErrorHandlingIRCClient extends ConfigurationBasedIRCClient {
 		errors.put("407", "ERR_TOOMANYTARGETS");
 		errors.put("408", "ERR_NOSUCHSERVICE");
 		errors.put("409", "ERR_NOORIGIN");
+		errors.put("410", "ERR_INVALIDCAPCMD");
 		errors.put("411", "ERR_NORECIPIENT");
 		errors.put("412", "ERR_NOTEXTTOSEND");
 		errors.put("413", "ERR_NOTOPLEVEL");

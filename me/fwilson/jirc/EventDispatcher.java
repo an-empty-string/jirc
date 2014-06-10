@@ -16,8 +16,8 @@ public class EventDispatcher {
 	}
 	
 	public void dispatchEvent(Event e) {
-		for(EventHandler h : this.handlers) {
-			h.handle(this, e);
+		for(int i = 0; i < this.handlers.size(); i++) {
+			this.handlers.get(i).handle(this, e);
 		}
 	}
 	

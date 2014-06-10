@@ -13,14 +13,14 @@ public class BaseIRCClient extends RedispatchingEventedTCPClient {
 	
 	public BaseIRCClient(String hostname, int port) throws UnknownHostException, IOException {
 		super(hostname, port);
-		setupHandlers();
 		setupQueue();
+		setupHandlers();
 	}
 	
 	public BaseIRCClient(String hostname) throws UnknownHostException, IOException {
 		super(hostname, 6667);
-		setupHandlers();
 		setupQueue();
+		setupHandlers();
 	}
 	
 	protected void setupHandlers() {
@@ -41,5 +41,8 @@ public class BaseIRCClient extends RedispatchingEventedTCPClient {
 	
 	public void queueMessage(IRCMessage m) {
 		outgoingQueue.add(m);
+		Event e = new Event("message-queued");
+		e.addInfo("message", m);
+		this.master.dispatchEvent(e);
 	}
 }

@@ -2,6 +2,7 @@ package me.fwilson.jirc;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class EventParsingIRCClient extends ErrorHandlingIRCClient {
@@ -38,7 +39,6 @@ public class EventParsingIRCClient extends ErrorHandlingIRCClient {
 				}
 			}
 		});
-		
 		this.on("irc-notice", new EventHandler() {
 			public void handle(EventDispatcher d, Event e) {
 				ParsedMessage message = (ParsedMessage)e.getInfo("message");
@@ -66,7 +66,6 @@ public class EventParsingIRCClient extends ErrorHandlingIRCClient {
 				}
 			}
 		});
-		
 		this.on("irc-join", new EventHandler() {
 			public void handle(EventDispatcher d, Event e) {
 				ParsedMessage message = (ParsedMessage)e.getInfo("message");
@@ -76,7 +75,6 @@ public class EventParsingIRCClient extends ErrorHandlingIRCClient {
 				d.dispatchEvent(e2);
 			}
 		});
-		
 		this.on("irc-part", new EventHandler() {
 			public void handle(EventDispatcher d, Event e) {
 				ParsedMessage message = (ParsedMessage)e.getInfo("message");
@@ -92,7 +90,6 @@ public class EventParsingIRCClient extends ErrorHandlingIRCClient {
 				d.dispatchEvent(e2);
 			}
 		});
-		
 		this.on("irc-quit", new EventHandler() {
 			public void handle(EventDispatcher d, Event e) {
 				ParsedMessage message = (ParsedMessage)e.getInfo("message");
@@ -105,6 +102,55 @@ public class EventParsingIRCClient extends ErrorHandlingIRCClient {
 					e2.addInfo("reason", "");
 				}
 				d.dispatchEvent(e2);
+			}
+		});
+		this.on("irc-kick", new EventHandler() {
+			public void handle(EventDispatcher d, Event e) {
+				ParsedMessage message = (ParsedMessage)e.getInfo("message");
+				Event e2 = new Event("kick");
+				e2.addInfo("kicker", UserFactory.fromHostmask(message.getPrefix()));
+				e2.addInfo("channel", new Channel(message.getParams().get(0)));
+				e2.addInfo("kickee", new User(message.getParams().get(1)));
+				if(message.getParams().size() > 2) {
+					e2.addInfo("reason", message.getParams().get(2));
+				}
+				else {
+					e2.addInfo("reason", "");
+				}
+				d.dispatchEvent(e2);
+			}
+		});
+		this.on("irc-mode", new EventHandler() {
+			public void handle(EventDispatcher d, Event e) {
+				ParsedMessage message = (ParsedMessage)e.getInfo("message");
+				Event e2 = new Event("mode");
+				e2.addInfo("setter", UserFactory.fromHostmask(message.getPrefix()));
+				e2.addInfo("channel", message.getParams().get(0));
+				e2.addInfo("modes", message.getParams().get(1));
+				if(message.getParams().size() > 2) {
+					e2.addInfo("arguments", message.getParams().subList(2, message.getParams().size()));
+				}
+				else {
+					e2.addInfo("arguments", new LinkedList<String>());
+				}
+				d.dispatchEvent(e2);
+			}
+		});
+		this.on("irc-nick", new EventHandler() {
+			public void handle(EventDispatcher d, Event e) {
+				ParsedMessage message = (ParsedMessage)e.getInfo("message");
+				Event e2 = new Event("nick");
+				e2.addInfo("oldnick", UserFactory.fromHostmask(message.getPrefix()).getNickname());
+				e2.addInfo("newnick", message.getParams().get(0));
+				d.dispatchEvent(e2);
+			}
+		});
+		this.on("nick", new Callback() {
+			public void callback(Event e) {
+				String old = (String)e.getInfo("oldnick");
+				if(old.equals(config.getNickname())) {
+					config.setNickname((String)e.getInfo("newnick"));
+				}
 			}
 		});
 	}

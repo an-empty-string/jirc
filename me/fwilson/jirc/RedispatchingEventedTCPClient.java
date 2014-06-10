@@ -37,6 +37,10 @@ public class RedispatchingEventedTCPClient {
 		});
 	}
 	
+	public EventDispatcher getMaster() {
+		return this.master;
+	}
+	
 	public void on(String eventType, EventHandler callback) {
 		if(!this.handlers.keySet().contains(eventType)) {
 			this.handlers.put(eventType, new LinkedList<EventHandler>());

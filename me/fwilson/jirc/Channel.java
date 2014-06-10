@@ -43,4 +43,8 @@ public class Channel implements Targetable {
 	public String getTarget() {
 		return this.name;
 	}
+	
+	public String toString() {
+		return "<Channel " + this.name + ">";
+	}
 }

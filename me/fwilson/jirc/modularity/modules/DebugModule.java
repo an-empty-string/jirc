@@ -1,8 +1,8 @@
 package me.fwilson.jirc.modularity.modules;
 
-import me.fwilson.jirc.BaseIRCClient;
-import me.fwilson.jirc.Callback;
-import me.fwilson.jirc.Event;
+import me.fwilson.jirc.events.Callback;
+import me.fwilson.jirc.events.Event;
+import me.fwilson.jirc.irc.clients.BaseIRCClient;
 import me.fwilson.jirc.modularity.support.Module;
 
 public class DebugModule extends Module {

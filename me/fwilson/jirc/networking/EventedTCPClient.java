@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import me.fwilson.jirc.EventDispatcher;
+import me.fwilson.jirc.events.EventDispatcher;
 
 /**
  * An EventedTCPClient uses the Event system that is part of jIRC to complement

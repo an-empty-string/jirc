@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.Stack;
 
-import me.fwilson.jirc.IRCClientConfiguration;
-import me.fwilson.jirc.ModularIRCClient;
+import me.fwilson.jirc.irc.IRCClientConfiguration;
+import me.fwilson.jirc.irc.clients.ModularIRCClient;
 
 public class CommandIRCConnect implements StackScriptCommand {
 	public void process(Stack<Object> s) {

@@ -2,7 +2,7 @@ package me.fwilson.jirc.modularity.support;
 
 import java.util.List;
 
-import me.fwilson.jirc.BaseIRCClient;
+import me.fwilson.jirc.irc.clients.BaseIRCClient;
 
 public abstract class Module {
 	public abstract void init(BaseIRCClient client);

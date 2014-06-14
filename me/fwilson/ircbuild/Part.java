@@ -3,7 +3,7 @@ package me.fwilson.ircbuild;
 import java.util.LinkedList;
 import java.util.List;
 
-import me.fwilson.jirc.Channel;
+import me.fwilson.jirc.entities.Channel;
 
 public class Part extends IRCMessage {
 	public Part(Channel c) {

@@ -1,0 +1,10 @@
+me.fwilson.jirc.entities
+me.fwilson.jirc.events
+me.fwilson.jirc.events.handlers
+me.fwilson.jirc.irc
+me.fwilson.jirc.irc.clients
+me.fwilson.jirc.modularity.modules
+me.fwilson.jirc.modularity.support
+me.fwilson.jirc.networking
+me.fwilson.jirc.parsing
+me.fwilson.jirc.stackscript

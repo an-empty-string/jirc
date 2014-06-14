@@ -3,7 +3,7 @@ package me.fwilson.ircbuild;
 import java.util.LinkedList;
 import java.util.List;
 
-import me.fwilson.jirc.User;
+import me.fwilson.jirc.entities.User;
 
 public class Whois extends IRCMessage {
 	public Whois(User user) {

@@ -2,7 +2,7 @@ package me.fwilson.jirc.stackscript;
 
 import java.util.Stack;
 
-import me.fwilson.jirc.BaseIRCClient;
+import me.fwilson.jirc.irc.clients.BaseIRCClient;
 import me.fwilson.jirc.modularity.support.ModuleFactory;
 import me.fwilson.jirc.modularity.support.NotAModuleException;
 

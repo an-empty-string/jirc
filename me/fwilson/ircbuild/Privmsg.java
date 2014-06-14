@@ -3,7 +3,7 @@ package me.fwilson.ircbuild;
 import java.util.LinkedList;
 import java.util.List;
 
-import me.fwilson.jirc.Targetable;
+import me.fwilson.jirc.entities.Targetable;
 
 public class Privmsg extends IRCMessage {
 	public Privmsg(Targetable target, String message) {

@@ -3,8 +3,8 @@ package me.fwilson.jirc.networking;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import me.fwilson.jirc.Event;
-import me.fwilson.jirc.EventDispatcher;
+import me.fwilson.jirc.events.Event;
+import me.fwilson.jirc.events.EventDispatcher;
 
 /**
  * The ThreadedInputStreamEventHandler dispatches "raw" events to an
